@@ -29,20 +29,20 @@ imgHeight = imgHeight/nChannels;
 flag = subtractAbs(5,3);
 precisionType = class(flag);
 %% Store the Raw Differences
-diff_img = zeros([imgHeight+2*WIN_RAD,imgWidth+2*WIN_RAD], precisionType);
+diff_img = zeros([imgHeight+2*WIN_RAD,imgWidth+2*WIN_RAD]);
 % Store the minimum cost
-min_cost = zeros([imgHeight,imgWidth],precisionType);
+min_cost = zeros([imgHeight,imgWidth]);
 min_cost(:,:) = 99999999;
 
 % Store the final disparity
-out_disp = zeros([imgHeight,imgWidth], precisionType);
+out_disp = zeros([imgHeight,imgWidth]);
 
 %% Filters for Aggregating the Differences
 % |filter_h| is the horizontal filter used in separable convolution.
 % |filter_v| is the vertical filter used in separable convolution which
 % operates on the output of the row convolution.
-filt_h = ones([1 17], precisionType);
-filt_v = ones([17 1], precisionType);
+filt_h = ones([1 17]);
+filt_v = ones([17 1]);
 
 % Main Loop that runs for all the disparity levels. This loop is
 % expected to run on CPU.
