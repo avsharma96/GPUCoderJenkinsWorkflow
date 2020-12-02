@@ -53,4 +53,5 @@ codegen -config cfg -args {imgRGB0, imgRGB1} stereoDisparity;
 
 %% Run Generated MEX and Show the Output Disparity
 out_disp = stereoDisparity_mex(imgRGB0,imgRGB1);
+%out_cpu = stereoDisparity(imgRGB0,imgRGB1);
 imagesc(out_disp);

@@ -6,13 +6,13 @@ cfg.FilePartitionMethod = 'SingleFile';
 cfg.GenerateReport = true;
 cfg.ReportPotentialDifferences = false;
 
-%% Define argument types for entry-point 'subtrPrecision'.
+%% Define argument types for entry-point 'subtractAbs'.
 ARGS = cell(1);
 ARGS{1} = cell(1,2);
 ARGS{1}{1} = coder.typeof(0);
 ARGS{1}{2} = coder.typeof(0);
 
 %% Invoke GPU Coder.
-codegen -config cfg subtrPrecision -args ARGS{1}
+codegen -config cfg subtractAbs -args ARGS{1}
 %% Run the unit tests using the generated MEX file
-coder.runTest('TestSubtrPrecision', 'subtrPrecision');
+coder.runTest('TestSubtractAbs', 'subtractAbs');

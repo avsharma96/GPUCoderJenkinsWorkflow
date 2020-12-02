@@ -1,7 +1,0 @@
-# ninja log v5
-7	2553	6284528092708099	build/win64/cpp_mexapi_version.obj	a69f7ad27916b610
-18	2563	6284528092008070	build/win64/rt_nonfinite.obj	da3eef7f6c5d53ef
-14	3957	6284528108668001	build/win64/_coder_subtrPrecision_mex.obj	cc67754460843229
-0	3977	6284528108867959	build/win64/_coder_subtrPrecision_info.obj	25cf5601a0bf31a3
-11	3980	6284528108867959	build/win64/subtrPrecision.obj	d74ab3c505275654
-3982	5552	6284528124647805	subtrPrecision_mex.mexw64	448c5c6c9183d06d

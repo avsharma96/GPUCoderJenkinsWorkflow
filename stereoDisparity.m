@@ -26,25 +26,23 @@ max_disparity = 0;
 nChannels = 4;
 imgHeight = imgHeight/nChannels;
 
+flag = subtractAbs(5,3);
+precisionType = class(flag);
 %% Store the Raw Differences
-diff_img = zeros([imgHeight+2*WIN_RAD,imgWidth+2*WIN_RAD]);
-
+diff_img = zeros([imgHeight+2*WIN_RAD,imgWidth+2*WIN_RAD], precisionType);
 % Store the minimum cost
-min_cost = zeros([imgHeight,imgWidth]);
+min_cost = zeros([imgHeight,imgWidth],precisionType);
 min_cost(:,:) = 99999999;
 
 % Store the final disparity
-out_disp = zeros([imgHeight,imgWidth]);
+out_disp = zeros([imgHeight,imgWidth], precisionType);
 
 %% Filters for Aggregating the Differences
 % |filter_h| is the horizontal filter used in separable convolution.
 % |filter_v| is the vertical filter used in separable convolution which
 % operates on the output of the row convolution.
-filt_h = ones([1 17]);
-filt_v = ones([17 1]);
-
-flag = subtrPrecision(5,3);
-precisionType = class(flag);
+filt_h = ones([1 17], precisionType);
+filt_v = ones([17 1], precisionType);
 
 % Main Loop that runs for all the disparity levels. This loop is
 % expected to run on CPU.
@@ -93,8 +91,7 @@ for d=min_disparity:max_disparity
             % across tour channels.
             tDiff = cast(0,precisionType);
             for chIdx = 1:nChannels
-                tDiff = tDiff + subtrPrecision(img0((ind_h-1)*(nChannels)+chIdx,ind_w1), img1((ind_h-1)*(nChannels)+chIdx,ind_w2));
-                %tDiff = tDiff + abs(int32(img0((ind_h-1)*(nChannels)+chIdx,ind_w1))-int32(img1((ind_h-1)*(nChannels)+chIdx,ind_w2)));
+                tDiff = tDiff + subtractAbs(img0((ind_h-1)*(nChannels)+chIdx,ind_w1), img1((ind_h-1)*(nChannels)+chIdx,ind_w2));
             end
             
             % Store the SAD cost into a matrix.
